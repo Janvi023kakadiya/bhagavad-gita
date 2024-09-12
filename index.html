@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BHAGAVAD GITA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-size: cover;
+            background-attachment: fixed;
+            color: #000;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .book {
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+            height: 80vh;
+            background-image: url('img/back.webp');
+            background-size: cover;
+            border-radius: 15px;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+            display: flex;
+            overflow: hidden;
+            perspective: 1500px;
+            transition: transform 1.2s ease-in-out;
+        }
+
+        .page {
+            width: 50%;
+            padding: 30px;
+            overflow-y: auto;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .page-left {
+            background-image: url('img/texture.jpg');
+            background-size: cover;
+            position: relative;
+            z-index: 2;
+            backface-visibility: hidden;
+            transform: rotateY(0deg);
+            transition: transform 1s ease;
+        }
+
+        .page-right {
+            background-image: url('img/texture.jpg');
+            background-size: cover;
+            backface-visibility: hidden;
+            transform: rotateY(90deg);
+            transition: transform 1s ease;
+        }
+
+        .book.open .page-left {
+            transform: rotateY(-180deg);
+        }
+
+        .book.open .page-right {
+            transform: rotateY(0deg);
+        }
+
+        #chapters li {
+            margin-bottom: 15px;
+            padding: 10px;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 1.2rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        #chapters li:hover {
+            background-color: #ffe4b5;
+        }
+
+        #sloks {
+            font-size: 1.2rem;
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #333;
+            padding: 10px;
+        }
+
+        h1 {
+            font-family: 'Georgia', serif;
+            color: #3e3d3d;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .toggle-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .toggle-btn:hover {
+            background-color: #4b4b4b;
+        }
+
+        @media (max-width: 768px) {
+            .book {
+                flex-direction: column;
+                width: 95%;
+                height: auto;
+            }
+
+            .page {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="book" id="book">
+        <div class="page page-left">
+            <h1>Chapters</h1>
+            <ul id="chapters"></ul>
+        </div>
+        <div class="page page-right">
+            <h1>Sloks</h1>
+            <div id="sloks"></div>
+        </div>
+        <button class="toggle-btn" onclick="toggleBook()">Open/Close Book</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
